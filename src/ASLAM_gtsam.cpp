@@ -148,16 +148,16 @@ void ASLAM_gtsam::initialize(const std::string& cfg_block)
             mrpt::typemeta::TEnumType<StateVectorType>::name2value(s);
     }
 
-    yamlLoadMemberReq<bool>(cfg, "use_incremental_solver", params_.use_incremental_solver);
-    yamlLoadMemberOpt<std::string>(cfg, "save_trajectory_file_prefix", params_.save_trajectory_file_prefix);
-    yamlLoadMemberOpt<bool>(cfg, "save_map_at_end", params_.save_map_at_end);
-    yamlLoadMemberOpt<int>(cfg, "isam2_additional_update_steps", params_.isam2_additional_update_steps);
-    yamlLoadMemberOpt<double>(cfg, "isam2_relinearize_threshold", params_.isam2_relinearize_threshold);
-    yamlLoadMemberOpt<int>(cfg, "isam2_relinearize_skip", params_.isam2_relinearize_skip);
+    yamlLoadMemberReq<bool>(cfg, "use_incremental_solver", &params_.use_incremental_solver);
+    yamlLoadMemberOpt<std::string>(cfg, "save_trajectory_file_prefix", &params_.save_trajectory_file_prefix);
+    yamlLoadMemberOpt<bool>(cfg, "save_map_at_end", &params_.save_map_at_end);
+    yamlLoadMemberOpt<int>(cfg, "isam2_additional_update_steps", &params_.isam2_additional_update_steps);
+    yamlLoadMemberOpt<double>(cfg, "isam2_relinearize_threshold", &params_.isam2_relinearize_threshold);
+    yamlLoadMemberOpt<int>(cfg, "isam2_relinearize_skip", &params_.isam2_relinearize_skip);
 
-    yamlLoadMemberOpt<double>(cfg, "const_vel_model_std_pos", params_.const_vel_model_std_pos);
-    yamlLoadMemberOpt<double>(cfg, "const_vel_model_std_vel", params_.const_vel_model_std_vel);
-    yamlLoadMemberOpt<double>(cfg, "max_interval_between_kfs_for_dynamic_model", params_.max_interval_between_kfs_for_dynamic_model);
+    yamlLoadMemberOpt<double>(cfg, "const_vel_model_std_pos", &params_.const_vel_model_std_pos);
+    yamlLoadMemberOpt<double>(cfg, "const_vel_model_std_vel", &params_.const_vel_model_std_vel);
+    yamlLoadMemberOpt<double>(cfg, "max_interval_between_kfs_for_dynamic_model", &params_.max_interval_between_kfs_for_dynamic_model);
 
     // Ensure we have access to the worldmodel:
     ASSERT_(worldmodel_);
