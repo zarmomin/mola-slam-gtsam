@@ -31,7 +31,7 @@ void RSLAM_gtsam::initialize(const std::string& cfg_block)
     // Mandatory parameters:
     auto cfg = YAML::Load(cfg_block);
 
-    ENSURE_YAML_ENTRY_EXISTS(cfg, "params");
+    ensureYamlEntryExists(cfg, "params");
     auto params = cfg["params"];
 
     MRPT_END

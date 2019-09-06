@@ -138,26 +138,26 @@ void ASLAM_gtsam::initialize(const std::string& cfg_block)
     // Mandatory parameters:
     auto c = YAML::Load(cfg_block);
 
-    ENSURE_YAML_ENTRY_EXISTS(c, "params");
+    ensureYamlEntryExists(c, "params");
     auto cfg = c["params"];
 
     {
-        ENSURE_YAML_ENTRY_EXISTS(cfg, "state_vector");
+        ensureYamlEntryExists(cfg, "state_vector");
         std::string s = cfg["state_vector"].as<std::string>();
         params_.state_vector =
             mrpt::typemeta::TEnumType<StateVectorType>::name2value(s);
     }
 
-    YAML_LOAD_REQ(params_, use_incremental_solver, bool);
-    YAML_LOAD_OPT(params_, save_trajectory_file_prefix, std::string);
-    YAML_LOAD_OPT(params_, save_map_at_end, bool);
-    YAML_LOAD_OPT(params_, isam2_additional_update_steps, int);
-    YAML_LOAD_OPT(params_, isam2_relinearize_threshold, double);
-    YAML_LOAD_OPT(params_, isam2_relinearize_skip, int);
+    yamlLoadMemberReq<bool>(cfg, "use_incremental_solver", params_.use_incremental_solver);
+    yamlLoadMemberOpt<std::string>(cfg, "save_trajectory_file_prefix", params_.save_trajectory_file_prefix);
+    yamlLoadMemberOpt<bool>(cfg, "save_map_at_end", params_.save_map_at_end);
+    yamlLoadMemberOpt<int>(cfg, "isam2_additional_update_steps", params_.isam2_additional_update_steps);
+    yamlLoadMemberOpt<double>(cfg, "isam2_relinearize_threshold", params_.isam2_relinearize_threshold);
+    yamlLoadMemberOpt<int>(cfg, "isam2_relinearize_skip", params_.isam2_relinearize_skip);
 
-    YAML_LOAD_OPT(params_, const_vel_model_std_pos, double);
-    YAML_LOAD_OPT(params_, const_vel_model_std_vel, double);
-    YAML_LOAD_OPT(params_, max_interval_between_kfs_for_dynamic_model, double);
+    yamlLoadMemberOpt<double>(cfg, "const_vel_model_std_pos", params_.const_vel_model_std_pos);
+    yamlLoadMemberOpt<double>(cfg, "const_vel_model_std_vel", params_.const_vel_model_std_vel);
+    yamlLoadMemberOpt<double>(cfg, "max_interval_between_kfs_for_dynamic_model", params_.max_interval_between_kfs_for_dynamic_model);
 
     // Ensure we have access to the worldmodel:
     ASSERT_(worldmodel_);
