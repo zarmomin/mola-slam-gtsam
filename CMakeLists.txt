@@ -32,7 +32,7 @@ mola_add_library(
 	SOURCES ${LIB_SRCS} ${LIB_PUBLIC_HDRS}
 	PUBLIC_LINK_LIBRARIES
 		mola-kernel
-		gtsam
+		${gtsam_LIBRARIES}
 	PRIVATE_LINK_LIBRARIES
 		mrpt::obs
 		mrpt::gui

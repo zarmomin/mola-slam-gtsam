@@ -10,7 +10,7 @@ mola_add_executable(
     TARGET  test-gtsam-basic-graph
     SOURCES test-gtsam-basic-graph.cpp
 	LINK_LIBRARIES
-	    gtsam
+	    ${GTSAM_LIBRARIES}
 )
 add_test(SLAM_GTSAM_basic_graph ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test-gtsam-basic-graph)
 
