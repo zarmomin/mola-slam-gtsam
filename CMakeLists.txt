@@ -32,7 +32,7 @@ mola_add_library(
 	SOURCES ${LIB_SRCS} ${LIB_PUBLIC_HDRS}
 	PUBLIC_LINK_LIBRARIES
 		mola-kernel
-		${gtsam_LIBRARIES}
+		${GTSAM_LIBRARIES}
 	PRIVATE_LINK_LIBRARIES
 		mrpt::obs
 		mrpt::gui
@@ -43,6 +43,9 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 	target_compile_options(${PROJECT_NAME} PRIVATE "-Wno-shadow" "-Wno-unused-parameter")
 endif()
 
+message("gtsam libs: ${GTSAM_LIBRARIES}")
+message("gtsam sources: ${GTSAM_SOURCE_DIR}")
+message("gtsam binaries: ${GTSAM_BINARY_DIR}")
 
 target_include_directories(${PROJECT_NAME}
     PRIVATE
