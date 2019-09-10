@@ -18,5 +18,6 @@ add_test(SLAM_GTSAM_basic_graph ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test-gtsam-bas
 target_include_directories(test-gtsam-basic-graph
     PRIVATE
     "${GTSAM_SOURCE_DIR}/gtsam/"
+    "${GTSAM_SOURCE_DIR}/gtsam/3rdparty/Eigen"
     "${GTSAM_BINARY_DIR}/"
     )
